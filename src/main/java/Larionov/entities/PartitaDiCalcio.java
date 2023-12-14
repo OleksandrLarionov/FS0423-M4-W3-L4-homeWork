@@ -2,9 +2,11 @@ package Larionov.entities;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import java.time.LocalDate;
 @Entity
 public class PartitaDiCalcio extends Evento{
+    @Id
     @GeneratedValue
     private long id;
     private String squdraDiCasa;
@@ -13,6 +15,7 @@ public class PartitaDiCalcio extends Evento{
     private int numeroGolSquadraDiCasa;
     private int getNumeroGolSquadraOspite;
 
+    public PartitaDiCalcio (){}
     public PartitaDiCalcio(String titolo, LocalDate dataEvento, String descrizione,
                            TipoEvento tipoEvento, int numeroMassimoPartecipanti,
                            Location location, String squdraDiCasa, String ospite,
