@@ -52,7 +52,7 @@ public class Partecipazione {
         this.stato = stato;
     }
 
-    public void setPartecipantea(Persona persona) {
+    public void setPartecipante(Persona persona) {
         this.partecipante = persona;
     }
 

@@ -4,10 +4,8 @@ import javax.persistence.*;
 import java.time.LocalDate;
 
 @Entity
+@DiscriminatorValue("concerto")
 public class Concerto extends Evento{
-    @Id
-    @GeneratedValue
-    private long id;
     @Enumerated(EnumType.STRING)
     private Genere genere;
     @Enumerated(EnumType.STRING)
@@ -21,11 +19,6 @@ public class Concerto extends Evento{
         super(titolo, dataEvento, descrizione, tipoEvento, numeroMassimoPartecipanti, location);
         this.genere = genere;
         this.instreaming = instreaming;
-    }
-
-    @Override
-    public long getId() {
-        return id;
     }
 
     public Genere getGenere() {
@@ -47,7 +40,7 @@ public class Concerto extends Evento{
     @Override
     public String toString() {
         return "Concerto{" +
-                "id=" + id +
+                "id=" +
                 ", genere=" + genere +
                 ", instreaming=" + instreaming +
                 '}';

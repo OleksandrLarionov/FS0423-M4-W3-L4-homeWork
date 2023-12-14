@@ -1,14 +1,11 @@
 package Larionov.entities;
 
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
 import java.time.LocalDate;
 @Entity
+@DiscriminatorValue("partita_di_calcio")
 public class PartitaDiCalcio extends Evento{
-    @Id
-    @GeneratedValue
-    private long id;
     private String squdraDiCasa;
     private String ospite;
     private String squadraVincente;
@@ -30,10 +27,6 @@ public class PartitaDiCalcio extends Evento{
         this.getNumeroGolSquadraOspite = getNumeroGolSquadraOspite;
     }
 
-    @Override
-    public long getId() {
-        return id;
-    }
 
     public String getSqudraDiCasa() {
         return squdraDiCasa;
@@ -78,7 +71,7 @@ public class PartitaDiCalcio extends Evento{
     @Override
     public String toString() {
         return "PartitaDiCalcio{" +
-                "id=" + id +
+                "id="  +
                 ", squdraDiCasa='" + squdraDiCasa + '\'' +
                 ", ospite='" + ospite + '\'' +
                 ", squadraVincente='" + squadraVincente + '\'' +

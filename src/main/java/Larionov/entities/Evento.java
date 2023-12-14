@@ -6,6 +6,8 @@ import java.util.List;
 
 @Entity
 @Table(name = "evento")
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+@DiscriminatorColumn(name = "tipo_evento")
 public class  Evento {
     @Id
     @GeneratedValue
@@ -93,6 +95,7 @@ public class  Evento {
     public void setLocation(Location location) {
         this.location = location;
     }
+
 
     @Override
     public String toString() {

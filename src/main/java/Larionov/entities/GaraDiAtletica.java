@@ -1,33 +1,30 @@
 package Larionov.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDate;
 @Entity
+@DiscriminatorValue("gara_di_atletica")
 public class GaraDiAtletica extends Evento{
-    @Id
-    @GeneratedValue
-    private long id;
-   private Persona atleta;
-   private Persona vincitore;
+    @ManyToOne(cascade = CascadeType.REMOVE)
+    @JoinColumn(name = "partecipante_id")
+    private Persona partecipante;
+    @ManyToOne(cascade = CascadeType.REMOVE)
+    @JoinColumn(name = "vincitore_id")
+    private Persona vincitore;
 
    public GaraDiAtletica (){}
     public GaraDiAtletica(String titolo, LocalDate dataEvento, String descrizione,
                           TipoEvento tipoEvento, int numeroMassimoPartecipanti,
                           Location location, Persona atleta, Persona vincitore) {
         super(titolo, dataEvento, descrizione, tipoEvento, numeroMassimoPartecipanti, location);
-        this.atleta = atleta;
+        this.partecipante = atleta;
         this.vincitore = vincitore;
     }
 
-    @Override
-    public long getId() {
-        return id;
-    }
+
 
     public Persona getAtleta() {
-        return atleta;
+        return partecipante;
     }
 
     public Persona getVincitore() {
@@ -35,7 +32,7 @@ public class GaraDiAtletica extends Evento{
     }
 
     public void setAtleta(Persona atleta) {
-        this.atleta = atleta;
+        this.partecipante = atleta;
     }
 
     public void setVincitore(Persona vincitore) {
@@ -45,8 +42,8 @@ public class GaraDiAtletica extends Evento{
     @Override
     public String toString() {
         return "GaraDiAtletica{" +
-                "id=" + id +
-                ", atleta=" + atleta +
+                "id=" +
+                ", atleta=" + partecipante +
                 ", vincitore=" + vincitore +
                 '}';
     }
