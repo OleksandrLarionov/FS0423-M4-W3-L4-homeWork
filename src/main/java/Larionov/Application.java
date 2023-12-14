@@ -27,9 +27,15 @@ public class Application {
         Location tokyo = new Location("Giappone","Tokyo");
 //        ld.save(tokyo);
 
+        Location circoMassimo = new Location("Circo Massimo", "Roma");
+//        ld.save(circoMassimo);
+
 //        ********************CREAZIONE EVENTI****************
         Evento olimpiadi = new Evento("Nuoto", LocalDate.of(2024,2,25), "Olimpiadi di nuoto libero con lo skate",TipoEvento.PUBBLICO, 20000, tokyo);
 //        ed.save(olimpiadi);
+
+        Concerto fallingInReverse = new Concerto("Falling In Reverse", LocalDate.of(2023, 5, 22),"CONCERTONE MITICOO! WATCH THE WORLD BURN",TipoEvento.PUBBLICO,10000,circoMassimo, Genere.ROCK, Instreaming.TRUE);
+//        ed.save(fallingInReverse);
 
         System.out.println("********************CREAZIONE DEL PARTECIPANTE********************");
         Persona paolo = new Persona("Paolo","Marchetti","paolo@mail.com", LocalDate.of(1991,4,25), Gender.MALE);
@@ -50,8 +56,14 @@ public class Application {
 //        List<Evento> listaEventi = ed.getAllEvents();
 //        listaEventi.forEach(System.out::println);
 
-        System.out.println("********************NOME EVENTO CON ID********************");
-//        ed.getEventoNameById(40); //non va
+        System.out.println("********************CONCERTO PER GENERE********************");
+
+        ed.getCongertiPerGenere(Genere.ROCK).forEach(System.out::println);
+
+        System.out.println("********************CONCERTO PER STREAMING********************");
+
+        ed.getConcertiInStreaming(Instreaming.TRUE).forEach(System.out::println);
+
 
 //        ********************DELETE EVENT****************
         System.out.println("********************EVENTI CANCELLATI********************");

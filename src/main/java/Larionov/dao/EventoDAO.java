@@ -1,9 +1,13 @@
 package Larionov.dao;
 
+import Larionov.entities.Concerto;
 import Larionov.entities.Evento;
+import Larionov.entities.Genere;
+import Larionov.entities.Instreaming;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
+import javax.persistence.TypedQuery;
 import java.util.List;
 
 public class EventoDAO {
@@ -48,6 +52,17 @@ public class EventoDAO {
         }
 
     };
+
+    public List<Concerto> getCongertiPerGenere (Genere genere) {
+        TypedQuery<Concerto> getCongertiPerGenere = em.createQuery("SELECT c FROM Concerto c WHERE c.genere = :genere", Concerto.class);
+        getCongertiPerGenere.setParameter("genere", genere);
+        return getCongertiPerGenere.getResultList();
+    }
+    public List<Concerto> getConcertiInStreaming (Instreaming instreaming){
+        TypedQuery<Concerto> getConcertiInStreaming = em.createQuery("SELECT c FROM Concerto c WHERE c.instreaming = :instreaming", Concerto.class);
+        getConcertiInStreaming.setParameter("instreaming", instreaming);
+        return getConcertiInStreaming.getResultList();
+    }
     public List<Evento> getAllEvents() {
         List<Evento> listaEventi = em.createQuery("SELECT e FROM Evento e", Evento.class).getResultList();
         return listaEventi;
