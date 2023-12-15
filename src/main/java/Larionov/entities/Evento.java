@@ -8,6 +8,7 @@ import java.util.List;
 @Table(name = "evento")
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 @DiscriminatorColumn(name = "tipo_evento")
+
 public class  Evento {
     @Id
     @GeneratedValue

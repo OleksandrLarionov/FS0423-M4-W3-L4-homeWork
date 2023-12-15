@@ -30,6 +30,9 @@ public class Application {
         Location circoMassimo = new Location("Circo Massimo", "Roma");
 //        ld.save(circoMassimo);
 
+        Location TokyoTappaDue = new Location("Giappone","Tokyo");
+//        ld.save(TokyoTappaDue);
+
 //        ********************CREAZIONE EVENTI****************
         Evento olimpiadi = new Evento("Nuoto", LocalDate.of(2024,2,25), "Olimpiadi di nuoto libero con lo skate",TipoEvento.PUBBLICO, 20000, tokyo);
 //        ed.save(olimpiadi);
@@ -63,6 +66,14 @@ public class Application {
         System.out.println("********************CONCERTO PER STREAMING********************");
 
         ed.getConcertiInStreaming(Instreaming.TRUE).forEach(System.out::println);
+
+        System.out.println("********************CREAZIONE PARTITE********************");
+
+        PartitaDiCalcio squadraDiBengi = new PartitaDiCalcio("Bengi vs Holly", LocalDate.of(2024,11,10),"UNA PARTITA EMOZIONANTE LA FINALE",TipoEvento.PUBBLICO,20,TokyoTappaDue,"BENGI","HOLLY","HOLLY",2,5);
+//        ed.save(squadraDiBengi);
+
+         long partite = ed.getNumeroPartiteVincenteInCasa("HOLLY");
+         System.out.printf(String.valueOf(partite));
 
 
 //        ********************DELETE EVENT****************

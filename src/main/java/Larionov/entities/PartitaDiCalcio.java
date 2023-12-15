@@ -2,9 +2,11 @@ package Larionov.entities;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.NamedQuery;
 import java.time.LocalDate;
 @Entity
 @DiscriminatorValue("partita_di_calcio")
+@NamedQuery(name ="getPartiteVincenteInCasa", query = "SELECT COUNT(p) FROM PartitaDiCalcio p WHERE p.squadraVincente = :squadraVincente")
 public class PartitaDiCalcio extends Evento{
     private String squdraDiCasa;
     private String ospite;

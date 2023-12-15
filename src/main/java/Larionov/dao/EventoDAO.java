@@ -63,6 +63,13 @@ public class EventoDAO {
         getConcertiInStreaming.setParameter("instreaming", instreaming);
         return getConcertiInStreaming.getResultList();
     }
+
+    public long getNumeroPartiteVincenteInCasa(String squadraVincente) {
+        TypedQuery<Long> getNumeroPartiteVincenteInCasa = em.createNamedQuery("getPartiteVincenteInCasa", Long.class);
+        getNumeroPartiteVincenteInCasa.setParameter("squadraVincente", squadraVincente);
+        return getNumeroPartiteVincenteInCasa.getSingleResult();
+    }
+
     public List<Evento> getAllEvents() {
         List<Evento> listaEventi = em.createQuery("SELECT e FROM Evento e", Evento.class).getResultList();
         return listaEventi;

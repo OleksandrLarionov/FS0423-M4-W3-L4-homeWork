@@ -5,6 +5,8 @@ import java.time.LocalDate;
 @Entity
 @DiscriminatorValue("gara_di_atletica")
 public class GaraDiAtletica extends Evento{
+
+    //many to many persona  partecipatnte all'evento
     @ManyToOne(cascade = CascadeType.REMOVE)
     @JoinColumn(name = "partecipante_id")
     private Persona partecipante;
